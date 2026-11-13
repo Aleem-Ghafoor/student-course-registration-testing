@@ -25,7 +25,7 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          pytest tests/ --cov=registration --cov-branch --cov-report=term-missing --cov-report=xml:coverage.xml --cov-report=json:coverage.json
+          python -m pytest tests/ --cov=registration --cov-branch --cov-report=term-missing --cov-report=xml:coverage.xml --cov-report=json:coverage.json
 
       - name: Upload coverage reports
         if: always()
