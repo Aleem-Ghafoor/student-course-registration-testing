@@ -2,6 +2,20 @@
 venv/
 .venv/
 
+# Microsoft Word temporary files
+~$*.docx
+
+# Temporary files
+*.tmp
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+.venv/
+
 # Python cache files
 __pycache__/
 *.py[cod]
