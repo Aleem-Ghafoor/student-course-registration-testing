@@ -12,3 +12,31 @@ env/
 .env
 .env.*
 !.env.example
+# Virtual Environment
+venv/
+.venv/
+
+# Microsoft Word temporary files
+~$*.docx
+
+# Temporary files
+*.tmp
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+.venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Pytest cache
+.pytest_cache/
+
+# Coverage files
+.coverage
+htmlcov/
