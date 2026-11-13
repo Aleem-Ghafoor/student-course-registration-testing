@@ -189,6 +189,49 @@ The original implementation was not modified during initial testing. Failed test
 
 Detailed CFG analysis, basis paths, condition coverage, MC/DC pairs, and test execution results are available in the assignment deliverable documentation.
 
----
+### B2 – Statement and Branch Coverage
 
+- Measured initial statement and branch coverage using pytest-cov.
+- Identified uncovered statements and branches.
+- Added additional white-box test cases to improve code coverage.
+- Compared initial and final coverage results.
 
+**Coverage Results:**
+
+| Coverage Type | Initial | Final |
+|---|---:|---:|
+| Statement Coverage | 92.45% | 98.11% |
+| Branch Coverage | 80.77% | 96.15% |
+
+### B4 – White-Box Testing
+
+- Created and updated `tests/test_whitebox.py`.
+- Added test cases to execute specific branches in the registration system.
+- Tested waitlist functionality using pytest monkeypatch.
+- Tested different conditions, including dues, prerequisites, credit limits, and course withdrawal.
+- Identified existing defects through failed test cases.
+
+### C5 – GitHub Actions
+
+- Created the workflow file `.github/workflows/tests.yml`.
+- Configured automatic test execution on every push and pull request.
+- Configured Python 3.14 and installed pytest and pytest-cov.
+- Generated statement and branch coverage reports.
+- Configured GitHub Actions to upload coverage reports as downloadable artifacts.
+
+**Final Combined Test Results:**
+
+| Result | Count |
+|---|---:|
+| Total Tests | 61 |
+| Passed | 43 |
+| Failed | 18 |
+
+The failing tests were preserved because they revealed defects in the original implementation. The implementation code was not modified during the initial testing and coverage evaluation.
+
+### Files Worked On
+
+- `tests/test_whitebox.py`
+- `.github/workflows/tests.yml`
+- `initial_coverage.json`
+- `updated_coverage.json`
