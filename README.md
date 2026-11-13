@@ -138,38 +138,57 @@ The original `registration.py` is kept unchanged during initial testing. Failed 
 
 ## White-box Testing
 
-**Status: Pending**
+White-box testing was performed on the `registration_decision()` function to analyze its control flow, decision complexity, and condition-level behavior.
 
-Planned activities:
+### Testing Activities
+
+The following techniques were used:
 
 - Control Flow Graph (CFG)
 - Cyclomatic Complexity
-- Statement Coverage
-- Branch Coverage
+- Independent Basis Path Testing
 - Condition Coverage
-- MC/DC Testing
-- White-box Pytest test cases
+- Modified Condition/Decision Coverage (MC/DC)
 
-## GitHub Collaboration
+### Control Flow Graph and Cyclomatic Complexity
 
-Git and GitHub are used for version control and team collaboration.
+The CFG was analyzed using an expanded short-circuit evaluation approach.
 
-Planned collaboration activities include:
+| Metric | Result |
+|---|---:|
+| CFG Nodes | 19 |
+| CFG Edges | 27 |
+| Cyclomatic Complexity | 10 |
+| Independent Basis Paths | 10 |
 
-- Feature branches
-- Meaningful commits
-- GitHub Issues
-- Pull Requests
-- GitHub Actions
+The analysis also identified an unreachable WAITLISTED branch because earlier capacity validation rejects the condition required to reach it.
 
-## Important Note
+### Condition Coverage and MC/DC
 
-Expected results are derived from the system requirements, not from the existing implementation.
+The compound capacity validation was analyzed using three atomic conditions:
 
-Failing tests are recorded honestly. Any defect fixes will be performed separately through a Pull Request with regression tests.
+- A: `0 <= course.enrolled`
+- B: `course.enrolled <= course.capacity`
+- C: `course.capacity < 1`
+
+All three conditions demonstrated both True and False outcomes through the selected test inputs. Three independent-effect pairs were documented for MC/DC, including the short-circuit behavior of Python.
+
+### Test Execution Results
+
+White-box tests were executed using Pytest.
+
+| Result | Count |
+|---|---:|
+| Total Test Cases | 19 |
+| Passed | 13 |
+| Failed | 6 |
+
+The six failed tests exposed implementation defects related to outstanding dues, prerequisite validation, credit limits, waiting-list handling, duplicate waiting-list entries, and withdrawal records.
+
+The original implementation was not modified during initial testing. Failed tests were documented against the expected system requirements.
+
+Detailed CFG analysis, basis paths, condition coverage, MC/DC pairs, and test execution results are available in the assignment deliverable documentation.
 
 ---
 
-**Course:** SE3002 Software Quality Engineering
-**Assignment:** Assignment 2 — System Under Test
-**Project:** Student Course Registration Module
+
