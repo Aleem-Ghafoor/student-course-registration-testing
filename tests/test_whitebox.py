@@ -230,3 +230,42 @@ def test_withdraw_course_when_not_registered_returns_false():
     assert student.current_credits == old_credits
     assert course.enrolled == old_enrolled
     assert student.registered_courses == old_registered
+
+
+def test_dues_above_1000_reaches_dues_block_branch():
+    student = make_student(dues=1001)
+    course = make_course()
+
+    result = registration_decision(student, course)
+
+    assert result == "DUES_BLOCK"
+
+def test_waitlisted_student_is_added_once(monkeypatch):
+    student = make_student()
+    course = make_course()
+
+    monkeypatch.setattr(
+        "registration.registration_decision",
+        lambda student, course: "WAITLISTED"
+    )
+
+    result = register_course(student, course)
+
+    assert result == "WAITLISTED"
+    assert course.waitlist == ["S101"]
+
+def test_existing_waitlist_student_is_not_added_again(monkeypatch):
+    student = make_student()
+    course = make_course()
+    course.waitlist.append("S101")
+
+    monkeypatch.setattr(
+        "registration.registration_decision",
+        lambda student, course: "WAITLISTED"
+    )
+
+    result = register_course(student, course)
+
+    assert result == "WAITLISTED"
+    assert course.waitlist == ["S101"]
+    
