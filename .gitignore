@@ -1,3 +1,17 @@
+# Python bytecode and test caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local virtual environments
+venv/
+.venv/
+env/
+
+# Local environment and secret files
+.env
+.env.*
+!.env.example
 # Virtual Environment
 venv/
 .venv/
